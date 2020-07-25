@@ -115,8 +115,14 @@ export default {
 <style>
 
 .app-content {
-  margin-left: 20px;
-  padding-top: 20px;
+  margin: 20px;
+  word-wrap: normal;
+  word-break: keep-all;
+  /* padding-top: 20px; */
+}
+
+.v-card, .v-card__title {
+  word-break: keep-all !important;
 }
 
 .logo-wrap {
@@ -138,5 +144,11 @@ h1 {
 
 .love-icon.v-icon{
   color: var(--e-color) !important;
+}
+
+@media (max-width: 850px) {
+  .app-content {
+    margin-right: 80px;
+  }
 }
 </style>
