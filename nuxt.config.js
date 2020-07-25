@@ -1,3 +1,4 @@
+import colors from 'vuetify/es5/util/colors'
 
 export default {
   /*
@@ -15,6 +16,7 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
+    titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
@@ -47,8 +49,10 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/vuetify',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-173535021-1'
+    }]
   ],
   /*
   ** Nuxt.js modules
@@ -56,13 +60,43 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {},
+  /*
+  ** vuetify module configuration
+  ** https://github.com/nuxt-community/vuetify-module
+  */
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: true,
+      themes: {
+        dark: {
+          primary: '#32ADC9',
+          accent: '#32ADC9',
+          secondary: '#CFDFE2',
+          info: '#CFDFE2',
+          warning: colors.amber.base,
+          error: '#BC394F',
+          success: '#31BA68'
+        },
+        light: {
+          primary: '#32ADC9',
+          accent: '#32ADC9',
+          secondary: '#CFDFE2',
+          info: '#CFDFE2',
+          warning: colors.amber.base,
+          error: '#BC394F',
+          success: '#31BA68'
+        }
+      }
+    }
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

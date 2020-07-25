@@ -1,62 +1,136 @@
 <template>
-  <div>
-    <Nuxt />
-  </div>
+  <v-app dark :style="cssProps">
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant="miniVariant"
+      :clipped="clipped"
+      fixed
+      app
+    >
+      <div class="logo-wrap">
+        <Logo class="logo" />
+        <h1>{{title}}</h1>
+      </div>
+      <v-list>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <!-- <v-app-bar
+      :clipped-left="clipped"
+      fixed
+      app
+    >
+    <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+    <v-toolbar-title v-text="title" />
+    </v-app-bar> -->
+    <v-content>
+      <Github />
+      <div class="app-content">
+        <nuxt />
+      </div>
+    </v-content>
+    <v-footer
+      :absolute="!fixed"
+      app
+    >
+      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span class="madeby">Made with <v-icon class="love-icon">{{love}}</v-icon> in San Jose, CA</span>
+    </v-footer>
+  </v-app>
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+      clipped: false,
+      drawer: true,
+      fixed: false,
+      love: 'mdi-cards-heart',
+      items: [
+        {
+          icon: 'mdi-apps',
+          title: 'Home',
+          to: '/'
+        },
+        {
+          icon: 'mdi-share-variant',
+          title: 'Embedables',
+          to: '/embedables'
+        },
+        {
+          icon: 'mdi-keyboard',
+          title: 'Key Codes',
+          to: '/key-codes'
+        },
+        {
+          icon: 'mdi-cog',
+          title: 'Settings',
+          to: '/settings'
+        }
+      ],
+      miniVariant: false,
+      title: 'TQLBox'
+    }
+  },
+  mounted  () {
+    if (localStorage.getItem('settings')) {
+      this.$vuetify.theme.dark = JSON.parse(localStorage.getItem('settings')).darkmode
+    }
+  },
+  computed: {
+    cssProps () {
+      return {
+        '--p-color': this.$vuetify.theme.currentTheme.primary,
+        '--a-color': this.$vuetify.theme.currentTheme.accent,
+        '--s-color': this.$vuetify.theme.currentTheme.secondary,
+        '--i-color': this.$vuetify.theme.currentTheme.info,
+        '--w-color': this.$vuetify.theme.currentTheme.warning,
+        '--e-color': this.$vuetify.theme.currentTheme.error,
+        '--su-color': this.$vuetify.theme.currentTheme.success
+      }
+    }
+  }
+}
+</script>
 <style>
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+
+.app-content {
+  margin-left: 20px;
+  padding-top: 20px;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
+.logo-wrap {
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+h1 {
+  font-weight: 700;
+  font-size: 30px;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.madeby {
+  margin-left: 20px;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.love-icon.v-icon{
+  color: var(--e-color) !important;
 }
 </style>
