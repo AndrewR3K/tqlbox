@@ -5,6 +5,7 @@
       :mini-variant="miniVariant"
       :clipped="clipped"
       fixed
+      mobile-breakpoint=500
       app
     >
       <div class="logo-wrap">
@@ -77,6 +78,11 @@ export default {
           to: '/key-codes'
         },
         {
+          icon: 'mdi-brush',
+          title: 'Color Picker',
+          to: '/color-picker'
+        },
+        {
           icon: 'mdi-cog',
           title: 'Settings',
           to: '/settings'
@@ -114,7 +120,7 @@ export default {
 }
 
 .logo-wrap {
-  width: 70%;
+  width: 120px;
   margin: 0 auto;
   text-align: center;
   margin-top: 20px;

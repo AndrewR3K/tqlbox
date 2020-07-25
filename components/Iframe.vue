@@ -47,7 +47,4 @@ export default {
 }
 </script>
 <style>
-.code-snippet {
-  color: #fff;
-}
 </style>

@@ -34,6 +34,6 @@ export default {
 </script>
 <style>
 .code-snippet {
-  color: #fff;
+  /* color: #fff; */
 }
 </style>
