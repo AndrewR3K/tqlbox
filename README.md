@@ -2,6 +2,8 @@
 
 >Tqlbox (pronounced tacklebox) is a site dedicated to providing random, yet essential web tools for the average person.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/badc4dd5-6efb-4692-9254-5ac659dedcc5/deploy-status)](https://app.netlify.com/sites/suspicious-clarke-736f67/deploys)
+
 ## Build Setup
 
 ```bash
