@@ -7,7 +7,7 @@
       You wouldn't go fishing without your TQLbox would you? Same goes for the web!
       <br/>
       <br/>
-      <h3>More comming soon!</h3>
+      <h3>More coming soon!</h3>
     </div>
   </div>
  </div>
