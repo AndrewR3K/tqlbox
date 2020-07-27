@@ -78,9 +78,14 @@ export default {
           to: '/key-codes'
         },
         {
-          icon: 'mdi-brush',
+          icon: 'mdi-eyedropper',
           title: 'Color Picker',
           to: '/color-picker'
+        },
+        {
+          icon: 'mdi-math-integral',
+          title: 'Conversions',
+          to: '/conversions'
         },
         {
           icon: 'mdi-cog',
