@@ -1,5 +1,5 @@
 <template>
-  <img src="../static/logo.png" class="NuxtLogo" alt="TQLBox" />
+  <div>Units!</div>
 </template>
 
 <style>
